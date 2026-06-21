@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.calculator {
+    background: #2d3436;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    width: 100%;
+    max-width: 320px;
+    overflow: hidden;
+}
+
+.display {
+    background: #1e272e;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.display-input {
+    width: 100%;
+    background: #1e272e;
+    border: none;
+    color: #00d2d3;
+    font-size: 2.5em;
+    font-weight: 600;
+    text-align: right;
+    outline: none;
+    margin-bottom: 10px;
+    font-family: 'Courier New', monospace;
+}
+
+.expression {
+    color: #636e72;
+    font-size: 1em;
+    text-align: right;
+    min-height: 20px;
+    font-family: 'Courier New', monospace;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.btn {
+    padding: 20px;
+    font-size: 1.5em;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn-number {
+    background: #636e72;
+    color: #fff;
+}
+
+.btn-number:hover {
+    background: #74b9ff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(116, 185, 255, 0.3);
+}
+
+.btn-function {
+    background: #fd79a8;
+    color: #fff;
+    font-weight: 700;
+}
+
+.btn-function:hover {
+    background: #ff7675;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 118, 117, 0.3);
+}
+
+.btn-equal {
+    background: #00d2d3;
+    color: #2d3436;
+    font-weight: 700;
+    font-size: 2em;
+}
+
+.btn-equal:hover {
+    background: #00e8d0;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 210, 211, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .calculator {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    .display-input {
+        font-size: 2em;
+    }
+
+    .btn {
+        padding: 15px;
+        font-size: 1.2em;
+    }
+
+    .buttons {
+        gap: 8px;
+    }
+}
+
+@media (max-width: 320px) {
+    .display-input {
+        font-size: 1.5em;
+    }
+
+    .btn {
+        padding: 12px;
+        font-size: 1em;
+    }
+}
