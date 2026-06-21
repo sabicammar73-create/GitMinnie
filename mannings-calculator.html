@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manning's Equation Calculator - Open Channel Flow</title>
+    <link rel="stylesheet" href="mannings-calculator.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Manning's Equation Calculator</h1>
+            <p class="subtitle">Professional Open Channel Flow Analysis</p>
+        </header>
+
+        <main class="calculator-wrapper">
+            <!-- Navigation Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('discharge')">
+                    <span class="tab-icon">💧</span> Discharge (Q)
+                </button>
+                <button class="tab-btn" onclick="switchTab('velocity')">
+                    <span class="tab-icon">⚡</span> Velocity (V)
+                </button>
+                <button class="tab-btn" onclick="switchTab('manning')">
+                    <span class="tab-icon">📊</span> Manning's n
+                </button>
+                <button class="tab-btn" onclick="switchTab('info')">
+                    <span class="tab-icon">ℹ️</span> Info & Ref
+                </button>
+            </div>
+
+            <!-- Tab 1: Discharge Calculation -->
+            <div id="discharge" class="tab-content active">
+                <div class="formula-box">
+                    <h2>Discharge Calculation</h2>
+                    <p class="formula">Q = (1/n) × A × R<sup>2/3</sup> × S<sup>1/2</sup></p>
+                </div>
+
+                <div class="input-section">
+                    <div class="input-group">
+                        <label for="q-manning">Manning's Roughness Coefficient (n)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="q-manning" placeholder="0.03" step="0.001" value="0.03">
+                            <span class="unit">dimensionless</span>
+                        </div>
+                        <small class="hint">Typical values: 0.015-0.05</small>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="q-area">Cross-sectional Area (A)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="q-area" placeholder="0.0" step="0.01" value="0.0">
+                            <span class="unit">m²</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="q-hydraulic">Hydraulic Radius (R)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="q-hydraulic" placeholder="0.0" step="0.01" value="0.0">
+                            <span class="unit">m</span>
+                        </div>
+                        <small class="hint">R = A / Wetted Perimeter</small>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="q-slope">Channel Slope (S)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="q-slope" placeholder="0.0" step="0.00001" value="0.001">
+                            <span class="unit">m/m</span>
+                        </div>
+                        <small class="hint">Can be entered as decimal or percentage</small>
+                    </div>
+
+                    <button class="calculate-btn" onclick="calculateDischarge()">Calculate Discharge</button>
+                </div>
+
+                <div id="q-result" class="result-section hidden">
+                    <h3>Results</h3>
+                    <div class="result-box">
+                        <div class="result-item">
+                            <span class="result-label">Discharge (Q)</span>
+                            <span class="result-value" id="q-output">0.00</span>
+                            <span class="result-unit">m³/s</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Also expressed as</span>
+                            <span class="result-value" id="q-output-lps">0.00</span>
+                            <span class="result-unit">L/s</span>
+                        </div>
+                    </div>
+                    <button class="clear-btn" onclick="clearResults('q')">Clear Results</button>
+                </div>
+            </div>
+
+            <!-- Tab 2: Velocity Calculation -->
+            <div id="velocity" class="tab-content">
+                <div class="formula-box">
+                    <h2>Velocity Calculation</h2>
+                    <p class="formula">V = (1/n) × R<sup>2/3</sup> × S<sup>1/2</sup></p>
+                </div>
+
+                <div class="input-section">
+                    <div class="input-group">
+                        <label for="v-manning">Manning's Roughness Coefficient (n)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="v-manning" placeholder="0.03" step="0.001" value="0.03">
+                            <span class="unit">dimensionless</span>
+                        </div>
+                        <small class="hint">Typical values: 0.015-0.05</small>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="v-hydraulic">Hydraulic Radius (R)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="v-hydraulic" placeholder="0.0" step="0.01" value="0.0">
+                            <span class="unit">m</span>
+                        </div>
+                        <small class="hint">R = A / Wetted Perimeter</small>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="v-slope">Channel Slope (S)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="v-slope" placeholder="0.0" step="0.00001" value="0.001">
+                            <span class="unit">m/m</span>
+                        </div>
+                    </div>
+
+                    <button class="calculate-btn" onclick="calculateVelocity()">Calculate Velocity</button>
+                </div>
+
+                <div id="v-result" class="result-section hidden">
+                    <h3>Results</h3>
+                    <div class="result-box">
+                        <div class="result-item">
+                            <span class="result-label">Velocity (V)</span>
+                            <span class="result-value" id="v-output">0.00</span>
+                            <span class="result-unit">m/s</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Flow Status</span>
+                            <span class="result-value" id="v-status">Normal</span>
+                            <span class="result-unit"></span>
+                        </div>
+                    </div>
+                    <button class="clear-btn" onclick="clearResults('v')">Clear Results</button>
+                </div>
+            </div>
+
+            <!-- Tab 3: Manning's n Calculation -->
+            <div id="manning" class="tab-content">
+                <div class="formula-box">
+                    <h2>Manning's Roughness Coefficient</h2>
+                    <p class="formula">n = (1/V) × R<sup>2/3</sup> × S<sup>1/2</sup></p>
+                </div>
+
+                <div class="input-section">
+                    <div class="input-group">
+                        <label for="n-velocity">Observed Velocity (V)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="n-velocity" placeholder="0.0" step="0.01" value="0.0">
+                            <span class="unit">m/s</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="n-hydraulic">Hydraulic Radius (R)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="n-hydraulic" placeholder="0.0" step="0.01" value="0.0">
+                            <span class="unit">m</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="n-slope">Channel Slope (S)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="n-slope" placeholder="0.0" step="0.00001" value="0.001">
+                            <span class="unit">m/m</span>
+                        </div>
+                    </div>
+
+                    <button class="calculate-btn" onclick="calculateManning()">Calculate Manning's n</button>
+                </div>
+
+                <div id="n-result" class="result-section hidden">
+                    <h3>Results</h3>
+                    <div class="result-box">
+                        <div class="result-item">
+                            <span class="result-label">Manning's n</span>
+                            <span class="result-value" id="n-output">0.00</span>
+                            <span class="result-unit">dimensionless</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Surface Type</span>
+                            <span class="result-value" id="n-surface">Unknown</span>
+                            <span class="result-unit"></span>
+                        </div>
+                    </div>
+                    <button class="clear-btn" onclick="clearResults('n')">Clear Results</button>
+                </div>
+            </div>
+
+            <!-- Tab 4: Information & Reference -->
+            <div id="info" class="tab-content">
+                <div class="info-section">
+                    <h2>About Manning's Equation</h2>
+                    <p>Manning's Equation is an empirical formula used to estimate the average velocity of water flowing in open channels. It was developed by Irish engineer Robert Manning in 1889.</p>
+
+                    <h3>Key Parameters:</h3>
+                    <ul class="info-list">
+                        <li><strong>Q:</strong> Discharge (flow rate) in m³/s</li>
+                        <li><strong>n:</strong> Manning's roughness coefficient (dimensionless)</li>
+                        <li><strong>A:</strong> Cross-sectional area in m²</li>
+                        <li><strong>R:</strong> Hydraulic radius = Area / Wetted Perimeter (m)</li>
+                        <li><strong>S:</strong> Channel slope or energy gradient (m/m)</li>
+                        <li><strong>V:</strong> Average velocity in m/s</li>
+                    </ul>
+
+                    <h3>Manning's n Values by Surface Type:</h3>
+                    <table class="reference-table">
+                        <thead>
+                            <tr>
+                                <th>Channel Type</th>
+                                <th>Condition</th>
+                                <th>n Value Range</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Concrete</td>
+                                <td>Good condition</td>
+                                <td>0.012 - 0.015</td>
+                            </tr>
+                            <tr>
+                                <td>Natural Channel</td>
+                                <td>Clean, straight</td>
+                                <td>0.025 - 0.035</td>
+                            </tr>
+                            <tr>
+                                <td>Natural Channel</td>
+                                <td>With vegetation</td>
+                                <td>0.035 - 0.070</td>
+                            </tr>
+                            <tr>
+                                <td>Brick</td>
+                                <td>Glazed</td>
+                                <td>0.011 - 0.013</td>
+                            </tr>
+                            <tr>
+                                <td>Earth</td>
+                                <td>Straight & uniform</td>
+                                <td>0.020 - 0.025</td>
+                            </tr>
+                            <tr>
+                                <td>Gravel</td>
+                                <td>Clean</td>
+                                <td>0.022 - 0.025</td>
+                            </tr>
+                            <tr>
+                                <td>Rock</td>
+                                <td>Unfinished</td>
+                                <td>0.035 - 0.050</td>
+                            </tr>
+                            <tr>
+                                <td>Floodplain</td>
+                                <td>Grass</td>
+                                <td>0.035 - 0.100</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Flow Velocity Standards:</h3>
+                    <ul class="info-list">
+                        <li><strong>V &lt; 0.3 m/s:</strong> Very slow flow (may cause sedimentation)</li>
+                        <li><strong>0.3 - 1.0 m/s:</strong> Acceptable for most channels</li>
+                        <li><strong>1.0 - 2.0 m/s:</strong> Moderate flow (good for many applications)</li>
+                        <li><strong>&gt; 2.0 m/s:</strong> High velocity (risk of erosion)</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Manning's Equation Calculator v1.0 | Civil Engineering Tool</p>
+            <p>Developed for GitMinnie</p>
+        </footer>
+    </div>
+
+    <script src="mannings-calculator.js"></script>
+</body>
+</html>
