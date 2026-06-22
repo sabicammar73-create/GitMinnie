@@ -1,8 +1,7 @@
-# 🔧 GitMinnie - Android Mobile Development
+# 🔧 GitMinnie - Android Web Calculators
 
-**Seamless Android Development Tool for All Device Generations**
-
-A comprehensive solution for working with both legacy and modern Android devices. Designed for developers who need reliable, cross-device compatibility.
+**Web Calculators Optimized for All Android Device Generations**
+A comprehensive solution for running web-based calculators on both legacy and modern Android devices. Designed for developers who need reliable, cross-device HTML/JS compatibility.
 
 ## ✨ Features
 
@@ -18,12 +17,7 @@ A comprehensive solution for working with both legacy and modern Android devices
 |-----------|---------|
 | **JavaScript** | Frontend Development |
 | **FastAPI** | Backend API |
-| **Docker** | Containerization |
-| **Python** | Backend Logic |
-
 ## 🚀 Quick Start
-
-```bash
 # Clone the repository
 git clone https://github.com/sabicammar73-create/GitMinnie.git
 cd GitMinnie
