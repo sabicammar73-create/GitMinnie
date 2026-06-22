@@ -1,5 +1,10 @@
 # 🔧 GitMinnie - Android Web Calculators
 
+![License](https://shields.io)
+![Stars](https://shields.io)
+![HTML5](https://shields.io)
+![JS](https://shields.io)
+
 **Web Calculators Optimized for All Android Device Generations**
 A comprehensive solution for running web-based calculators on both legacy and modern Android devices. Designed for developers who need reliable, cross-device HTML/JS compatibility.
 
