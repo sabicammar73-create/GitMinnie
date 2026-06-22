@@ -1,0 +1,12 @@
+# Android i OS sistemske datoteke
+.DS_Store
+Thumbs.db
+.BuildArtifacts/
+
+# Privremene datoteke editora koda
+.vscode/
+.idea/
+
+# Node/Zavisnosti (ako ih budete imali)
+node_modules/
+.env
