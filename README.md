@@ -23,16 +23,18 @@ Web Calculators Optimized for All Android Device Generations. A comprehensive so
 | **JavaScript** | Frontend Development |
 | **FastAPI** | Backend API |
 
----
+--
+
 
 ## 🚀 Quick Start
-
 
 ### Clone the repository
 
 ```bash
-
 git clone https://github.com
+cd GitMinnie
+```
+
 ### Install dependencies
 
 ```bash
@@ -44,4 +46,3 @@ npm install
 ```bash
 docker-compose up
 ```
-
