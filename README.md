@@ -32,7 +32,8 @@ Web Calculators Optimized for All Android Device Generations. A comprehensive so
 ```bash
 git clone https://github.com
 cd GitMinnie
-```
+
+
 
 ### Install dependencies
 
