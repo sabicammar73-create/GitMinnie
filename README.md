@@ -31,12 +31,8 @@ Web Calculators Optimized for All Android Device Generations. A comprehensive so
 ## 🚀 Quick Start
 
 ### 1. Clone the Repository
-
-```bash
 git clone https://github.com
 cd GitMinnie
-```
-
 ### 2. Install Dependencies
 
 Za instalaciju svih potrebnih paketa za frontend (Node.js) i backend (Python/FastAPI), pokrenite sljedeće naredbe:
