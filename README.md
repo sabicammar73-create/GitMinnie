@@ -1,68 +1,58 @@
+# 📱 GitMinnie — Android Web Calculators
 
-# 📱 GitMinnie - Android Web Calculators
+`License: MIT` | `Stars: 1` | `Languages: HTML / JS / Python`
 
-`License: MIT` | `Stars: 1` | `Languages: HTML/JS/Python`
-
----
-
-Web Calculators Optimized for All Android Device Generations. A comprehensive solution for running web-based calculators on both legacy and modern Android devices. Designed for developers who need reliable, cross-device HTML/JS compatibility.
+A robust, cross-device solution specifically optimized to run responsive web-based calculators across all generations of Android devices—from legacy builds to modern systems.
 
 ---
 
-## ✨ Features
+### ✨ Core Features
 
-* ✅ **Full compatibility** with legacy Android devices
-* ✅ **Support** for modern Android versions
-* ✅ **Docker containerization** for easy deployment
-* ✅ **FastAPI backend** for reliable service
-* ✅ **JavaScript frontend** with intuitive UI
-
----
-
-## 🛠️ Tech Stack
-
-| Technology | Purpose |
-| :--- | :--- |
-| **JavaScript** | Frontend Development |
-| **FastAPI** | Backend API |
+* 🚀 **Universal Compatibility** — Seamless performance on older legacy and modern Android web views.
+* 📦 **Containerized Deployment** — Ready to launch instantly with Docker and Docker Compose.
+* ⚡ **High-Performance Backend** — Powered by a fast, asynchronous FastAPI server.
+* 🎨 **Intuitive Frontend** — Clean and lightweight native JavaScript UI.
 
 ---
 
-## 🚀 Quick Start
+### 🛠️ Architecture & Tech Stack
 
-### 1. Clone the Repository
+| Component | Technology | Primary Purpose |
+| :--- | :--- | :--- |
+| **Frontend** | JavaScript / HTML5 | Lightweight UI Rendering & Interactivity |
+| **Backend** | FastAPI / Python | High-speed API Services & Backend Logic |
+| **DevOps** | Docker | Unified Multi-Container Orchestration |
 
+---
+
+### 🚀 Getting Started
+
+#### 1. Clone the Repository
 ```bash
 git clone https://github.com
 cd GitMinnie
 ```
 
-
-### 2. Install Dependencies
-
-Za instalaciju svih potrebnih paketa za frontend (Node.js) i backend (Python/FastAPI), pokrenite sljedeće naredbe:
-
+#### 2. Install Dependencies
+Set up both your frontend environment and backend Python packages:
 ```bash
-# Frontend ovisnosti
+# Set up frontend modules
 npm install
 
-# Backend ovisnosti
+# Set up backend modules
 pip install -r requirements.txt
 ```
 
-### 3. Run the Application
+#### 3. Execution Methods
 
-#### Option A: Run with Docker (Recommended)
-Najbrži način za pokretanje cijelog stacka u kontejneru:
-
+##### 🐳 Option A: Run with Docker (Recommended)
+Automatically build images and start the full ecosystem:
 ```bash
 docker-compose up --build
 ```
 
-#### Option B: Run Locally (Without Docker)
-Ako želite pokrenuti projekt izravno na svom računalu:
-
+##### 🐍 Option B: Run Locally (Without Docker)
+Launch the lightweight development server directly on your host machine:
 ```bash
-# Pokretanje FastAPI pozadinske aplikacije
 uvicorn main:app --reload
 ```
